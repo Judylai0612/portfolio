@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>品牌規劃 | Judy Lai Portfolio</title>
+<meta name="description" content="Judy Lai 品牌規劃作品：品牌識別系統、品牌延伸應用。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="portfolio">
+
+<header class="site-header" id="site-header">
+  <nav class="navbar">
+    <a href="index.html" class="logo">JUDY LAI</a>
+    <button class="nav-toggle" id="navToggle" aria-label="開啟選單" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="nav-link" data-nav-target="about">About Me</a></li>
+      <li><a href="portfolio.html" class="nav-link" data-nav-target="portfolio">Portfolio</a></li>
+      <li><a href="contact.html" class="nav-link" data-nav-target="contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="section work-detail">
+    <a href="portfolio.html" class="back-link fade-in">← 返回 Portfolio</a>
+    <h2 class="section-title fade-in">品牌規劃</h2>
+    <p class="section-subtitle fade-in">Branding</p>
+
+    <div class="work-slides" id="workSlides">
+      <article class="work-slide is-active" data-slide="0">
+        <div class="work-head">
+          <h3 class="work-title">品牌識別系統</h3>
+          <p class="work-desc">從標誌、色彩到字體規範，建立一套完整的品牌識別系統，確保品牌形象在各種應用情境下保持一致。</p>
+        </div>
+        <div class="work-mosaic mosaic-3">
+          <div class="mosaic-item mosaic-main" style="--card-color:#B0A8B9;"></div>
+          <div class="mosaic-item" style="--card-color:#9FB3B8;"></div>
+          <div class="mosaic-item" style="--card-color:#8B9DAF;"></div>
+        </div>
+      </article>
+
+      <article class="work-slide" data-slide="1">
+        <div class="work-head">
+          <h3 class="work-title">品牌延伸應用</h3>
+          <p class="work-desc">將核心識別延伸至名片、包裝、周邊等應用物件，讓品牌精神在每個接觸點都被完整傳遞。</p>
+        </div>
+        <div class="work-mosaic mosaic-2">
+          <div class="mosaic-item" style="--card-color:#C2B8A3;"></div>
+          <div class="mosaic-item" style="--card-color:#A3B0A3;"></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="work-nav">
+      <button class="work-arrow work-arrow-prev" aria-label="上一筆作品">←</button>
+      <span class="work-counter"><span id="workCounterCurrent">1</span> / <span id="workCounterTotal">2</span></span>
+      <button class="work-arrow work-arrow-next" aria-label="下一筆作品">→</button>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>&copy; 2026 Judy Lai. All rights reserved.</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

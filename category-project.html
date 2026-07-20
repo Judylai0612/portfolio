@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>專案設計 | Judy Lai Portfolio</title>
+<meta name="description" content="Judy Lai 專案設計作品：跨領域整合專案、展覽空間規劃。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="portfolio">
+
+<header class="site-header" id="site-header">
+  <nav class="navbar">
+    <a href="index.html" class="logo">JUDY LAI</a>
+    <button class="nav-toggle" id="navToggle" aria-label="開啟選單" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="nav-link" data-nav-target="about">About Me</a></li>
+      <li><a href="portfolio.html" class="nav-link" data-nav-target="portfolio">Portfolio</a></li>
+      <li><a href="contact.html" class="nav-link" data-nav-target="contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="section work-detail">
+    <a href="portfolio.html" class="back-link fade-in">← 返回 Portfolio</a>
+    <h2 class="section-title fade-in">專案設計</h2>
+    <p class="section-subtitle fade-in">Project Design</p>
+
+    <div class="work-slides" id="workSlides">
+      <article class="work-slide is-active" data-slide="0">
+        <div class="work-head">
+          <h3 class="work-title">跨領域整合專案</h3>
+          <p class="work-desc">統籌視覺、內容與體驗三個面向，讓專案在不同媒介間都能維持一致且完整的敘事。</p>
+        </div>
+        <div class="work-mosaic mosaic-3">
+          <div class="mosaic-item mosaic-main" style="--card-color:#8B9DAF;"></div>
+          <div class="mosaic-item" style="--card-color:#B0A8B9;"></div>
+          <div class="mosaic-item" style="--card-color:#9FB3B8;"></div>
+        </div>
+      </article>
+
+      <article class="work-slide" data-slide="1">
+        <div class="work-head">
+          <h3 class="work-title">展覽空間規劃</h3>
+          <p class="work-desc">從動線規劃到視覺呈現，打造兼具機能與美感的展覽空間，讓觀者能沉浸於故事之中。</p>
+        </div>
+        <div class="work-mosaic mosaic-2">
+          <div class="mosaic-item" style="--card-color:#A3B0A3;"></div>
+          <div class="mosaic-item" style="--card-color:#C2B8A3;"></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="work-nav">
+      <button class="work-arrow work-arrow-prev" aria-label="上一筆作品">←</button>
+      <span class="work-counter"><span id="workCounterCurrent">1</span> / <span id="workCounterTotal">2</span></span>
+      <button class="work-arrow work-arrow-next" aria-label="下一筆作品">→</button>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>&copy; 2026 Judy Lai. All rights reserved.</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
