@@ -363,6 +363,30 @@ section {
   display: none;
 }
 
+.category-card.image-only::before {
+  display: none;
+}
+
+.category-card.image-only:hover .category-card-img {
+  transform: scale(1.06);
+}
+
+.category-card-img {
+  transition: transform var(--transition-fast);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .category-card.is-disabled .category-card-title {
   color: var(--color-text-light);
 }
