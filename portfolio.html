@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio | Judy Lai</title>
+<meta name="description" content="Judy Lai 作品集，依社群貼文設計、平面設計、品牌規劃、攝影作品、專案設計分類瀏覽。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="portfolio">
+
+<header class="site-header" id="site-header">
+  <nav class="navbar">
+    <a href="index.html" class="logo">JUDY LAI</a>
+    <button class="nav-toggle" id="navToggle" aria-label="開啟選單" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="nav-link" data-nav-target="about">About Me</a></li>
+      <li><a href="portfolio.html" class="nav-link" data-nav-target="portfolio">Portfolio</a></li>
+      <li><a href="contact.html" class="nav-link" data-nav-target="contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="banner">
+    <div class="banner-track" id="bannerTrack">
+      <div class="banner-slide" style="--card-color:#8B9DAF;"><span class="banner-label">社群貼文設計</span></div>
+      <div class="banner-slide" style="--card-color:#A3B0A3;"><span class="banner-label">平面設計</span></div>
+      <div class="banner-slide" style="--card-color:#C2B8A3;"><span class="banner-label">品牌規劃</span></div>
+      <div class="banner-slide" style="--card-color:#B0A8B9;"><span class="banner-label">攝影作品</span></div>
+      <div class="banner-slide" style="--card-color:#9FB3B8;"><span class="banner-label">專案設計</span></div>
+    </div>
+    <div class="banner-dots" id="bannerDots"></div>
+  </section>
+
+  <section class="section portfolio-section">
+    <h2 class="section-title fade-in">Portfolio</h2>
+    <p class="section-subtitle fade-in">依作品類型瀏覽</p>
+
+    <div class="category-cards-grid">
+      <a href="category-social.html" class="category-card fade-in" style="--card-color:#8B9DAF;">
+        <h3 class="category-card-title">社群貼文設計</h3>
+      </a>
+      <a href="category-graphic.html" class="category-card fade-in" style="--card-color:#A3B0A3;">
+        <h3 class="category-card-title">平面設計</h3>
+      </a>
+      <a href="category-branding.html" class="category-card fade-in" style="--card-color:#C2B8A3;">
+        <h3 class="category-card-title">品牌規劃</h3>
+      </a>
+      <a href="category-photography.html" class="category-card fade-in" style="--card-color:#B0A8B9;">
+        <h3 class="category-card-title">攝影作品</h3>
+      </a>
+      <a href="category-project.html" class="category-card fade-in" style="--card-color:#9FB3B8;">
+        <h3 class="category-card-title">專案設計</h3>
+      </a>
+      <div class="category-card is-disabled fade-in" aria-disabled="true">
+        <h3 class="category-card-title">敬請期待</h3>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>&copy; 2026 Judy Lai. All rights reserved.</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
