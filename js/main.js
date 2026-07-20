@@ -72,34 +72,4 @@ document.addEventListener('DOMContentLoaded', () => {
       timer = setInterval(nextSlide, 4000);
     });
   }
-
-  // Category detail page: work slide navigation
-  const workSlides = Array.from(document.querySelectorAll('.work-slide'));
-  if (workSlides.length) {
-    const prevBtn = document.querySelector('.work-arrow-prev');
-    const nextBtn = document.querySelector('.work-arrow-next');
-    const counterCurrent = document.getElementById('workCounterCurrent');
-    const counterTotal = document.getElementById('workCounterTotal');
-    const total = workSlides.length;
-    let current = 0;
-
-    counterTotal.textContent = total;
-
-    function show(i) {
-      current = i;
-      workSlides.forEach((slide, idx) => {
-        if (idx === current) {
-          slide.classList.remove('is-active');
-          void slide.offsetWidth;
-          slide.classList.add('is-active');
-        } else {
-          slide.classList.remove('is-active');
-        }
-      });
-      counterCurrent.textContent = current + 1;
-    }
-
-    prevBtn.addEventListener('click', () => show((current - 1 + total) % total));
-    nextBtn.addEventListener('click', () => show((current + 1) % total));
-  }
 });
