@@ -183,11 +183,13 @@ section {
 .about-section {
   position: relative;
   min-height: 92vh;
+  max-width: var(--max-width);
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 5vw;
-  padding: var(--header-height) 6vw 0;
+  padding: var(--header-height) 24px 0;
   overflow: hidden;
 }
 
