@@ -841,6 +841,11 @@ section {
   height: min(40vw, 400px);
 }
 
+.work-mosaic.mosaic-6 {
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: min(22vw, 220px);
+}
+
 .mosaic-item {
   border-radius: 6px;
   overflow: hidden;
@@ -1059,6 +1064,15 @@ section {
   }
 
   .work-mosaic.mosaic-2 .mosaic-item {
+    aspect-ratio: 1 / 1;
+  }
+
+  .work-mosaic.mosaic-6 {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+  }
+
+  .work-mosaic.mosaic-6 .mosaic-item {
     aspect-ratio: 1 / 1;
   }
 }
