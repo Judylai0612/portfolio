@@ -78,11 +78,26 @@ document.addEventListener('DOMContentLoaded', () => {
   if (lightbox) {
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxClose = document.getElementById('lightboxClose');
-    const zoomableImages = document.querySelectorAll('.mosaic-item img');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    const zoomableImages = Array.from(document.querySelectorAll('.mosaic-item img'));
+    let currentIndex = 0;
 
-    const openLightbox = (src, alt) => {
-      lightboxImg.src = src;
-      lightboxImg.alt = alt || '';
+    const updateArrows = () => {
+      lightboxPrev.style.display = currentIndex > 0 ? 'flex' : 'none';
+      lightboxNext.style.display = currentIndex < zoomableImages.length - 1 ? 'flex' : 'none';
+    };
+
+    const showImage = (index) => {
+      currentIndex = index;
+      const img = zoomableImages[currentIndex];
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt || '';
+      updateArrows();
+    };
+
+    const openLightbox = (index) => {
+      showImage(index);
       lightbox.classList.add('is-open');
       document.body.style.overflow = 'hidden';
     };
@@ -93,16 +108,25 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.style.overflow = '';
     };
 
-    zoomableImages.forEach((img) => {
-      img.addEventListener('click', () => openLightbox(img.src, img.alt));
+    zoomableImages.forEach((img, i) => {
+      img.addEventListener('click', () => openLightbox(i));
     });
 
     lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', () => {
+      if (currentIndex > 0) showImage(currentIndex - 1);
+    });
+    lightboxNext.addEventListener('click', () => {
+      if (currentIndex < zoomableImages.length - 1) showImage(currentIndex + 1);
+    });
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox) closeLightbox();
     });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+      if (!lightbox.classList.contains('is-open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft' && currentIndex > 0) showImage(currentIndex - 1);
+      if (e.key === 'ArrowRight' && currentIndex < zoomableImages.length - 1) showImage(currentIndex + 1);
     });
   }
 });
