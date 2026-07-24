@@ -65,11 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
       goTo((index + 1) % total);
     }
 
-    let timer = setInterval(nextSlide, 4000);
+    let timer = setInterval(nextSlide, 3500);
     const banner = bannerTrack.closest('.banner');
     banner.addEventListener('mouseenter', () => clearInterval(timer));
     banner.addEventListener('mouseleave', () => {
-      timer = setInterval(nextSlide, 4000);
+      timer = setInterval(nextSlide, 3500);
     });
   }
 
