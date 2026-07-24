@@ -753,6 +753,29 @@ section {
   transform: scale(1.06);
 }
 
+.category-card.image-only::after {
+  content: attr(aria-label);
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background-color: rgba(0, 0, 0, 0);
+  opacity: 0;
+  transition: opacity var(--transition-fast), background-color var(--transition-fast);
+  pointer-events: none;
+}
+
+.category-card.image-only:hover::after {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
 .category-card-img {
   transition: transform var(--transition-fast);
 }
@@ -839,11 +862,6 @@ section {
 .work-mosaic.mosaic-2 {
   grid-template-columns: repeat(2, 1fr);
   height: min(40vw, 400px);
-}
-
-.work-mosaic.mosaic-6 {
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: min(22vw, 220px);
 }
 
 .mosaic-item {
@@ -1114,15 +1132,6 @@ section {
   }
 
   .work-mosaic.mosaic-2 .mosaic-item {
-    aspect-ratio: 1 / 1;
-  }
-
-  .work-mosaic.mosaic-6 {
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: auto;
-  }
-
-  .work-mosaic.mosaic-6 .mosaic-item {
     aspect-ratio: 1 / 1;
   }
 }
