@@ -864,6 +864,14 @@ section {
   height: min(40vw, 400px);
 }
 
+.work-mosaic.mosaic-1 {
+  grid-template-columns: 1fr;
+}
+
+.work-mosaic.mosaic-1 .mosaic-item img {
+  height: auto;
+}
+
 .mosaic-item {
   border-radius: 6px;
   overflow: hidden;
@@ -922,6 +930,47 @@ section {
 
 .lightbox-close:hover {
   background-color: rgba(255, 255, 255, 0.22);
+}
+
+.lightbox img {
+  touch-action: none;
+  transform-origin: center center;
+  transition: transform 0.2s ease;
+}
+
+.lightbox img.is-dragging {
+  transition: none;
+}
+
+.lightbox img.is-zoomed {
+  cursor: grab;
+}
+
+.lightbox-zoom {
+  position: fixed;
+  top: 20px;
+  right: 76px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast);
+}
+
+.lightbox-zoom:hover {
+  background-color: rgba(255, 255, 255, 0.22);
+}
+
+.lightbox-zoom.is-active {
+  background-color: rgba(255, 255, 255, 0.35);
 }
 
 .lightbox-prev,
