@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const fadeEls = document.querySelectorAll('.fade-in');
+  const fadeEls = document.querySelectorAll('.fade-in, .reveal-text');
   const fadeObserver = new IntersectionObserver(
     (entries, observer) => {
       entries.forEach((entry) => {

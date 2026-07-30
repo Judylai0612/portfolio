@@ -437,25 +437,23 @@ section {
   50% { transform: translateY(10px); opacity: 0.3; }
 }
 
-/* Hero entrance animation */
+/* Hero entrance animation (scroll-triggered, staggered) */
 .reveal-text {
   opacity: 0;
   transform: translateY(24px);
-  animation: revealUp 0.8s ease forwards;
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.hero-eyebrow.reveal-text { animation-delay: 0.1s; }
-.hero-name.reveal-text { animation-delay: 0.25s; }
-.hero-title.reveal-text { animation-delay: 0.45s; }
-.hero-desc.reveal-text { animation-delay: 0.65s; }
-.hero-hint.reveal-text { animation-delay: 0.8s; }
-
-@keyframes revealUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.reveal-text.in-view {
+  opacity: 1;
+  transform: translateY(0);
 }
+
+.hero-eyebrow.reveal-text { transition-delay: 0.1s; }
+.hero-name.reveal-text { transition-delay: 0.25s; }
+.hero-title.reveal-text { transition-delay: 0.45s; }
+.hero-desc.reveal-text { transition-delay: 0.65s; }
+.hero-hint.reveal-text { transition-delay: 0.8s; }
 
 /* ===== Resume ===== */
 .resume-section {
