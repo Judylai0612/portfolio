@@ -112,6 +112,70 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Portfolio gallery: mosaic layout + category filter
+  const gallery = document.getElementById('workGallery');
+  if (gallery) {
+    const galleryItems = Array.from(gallery.querySelectorAll('.gallery-item'));
+    const filterPills = document.getElementById('filterPills');
+    const galleryEmpty = document.getElementById('galleryEmpty');
+
+    // Each entry is one row: the column spans of its tiles + their shared row
+    // span. Every row fills the grid exactly, so the wall never leaves holes.
+    const ROWS = {
+      6: [[[2, 4], 3], [[3, 3], 4], [[4, 2], 3], [[2, 2, 2], 4], [[3, 3], 3], [[2, 4], 4]],
+      4: [[[2, 2], 3], [[4], 4], [[2, 2], 4], [[4], 3]],
+      2: [[[1, 1], 3], [[2], 4], [[1, 1], 4]]
+    };
+
+    const colCount = () => (window.innerWidth <= 560 ? 2 : window.innerWidth <= 900 ? 4 : 6);
+
+    const layout = () => {
+      const cols = colCount();
+      const rows = ROWS[cols];
+      gallery.style.setProperty('--gallery-cols', cols);
+
+      const visible = galleryItems.filter((el) => !el.classList.contains('is-hidden'));
+      let i = 0;
+      let r = 0;
+      while (i < visible.length) {
+        const [spans, rowSpan] = rows[r % rows.length];
+        for (let s = 0; s < spans.length && i < visible.length; s += 1, i += 1) {
+          visible[i].style.gridColumn = `span ${spans[s]}`;
+          visible[i].style.gridRow = `span ${rowSpan}`;
+        }
+        r += 1;
+      }
+    };
+
+    layout();
+    window.addEventListener('resize', layout);
+
+    if (filterPills) {
+      filterPills.addEventListener('click', (e) => {
+        const pill = e.target.closest('.filter-pill');
+        if (!pill) return;
+
+        filterPills.querySelectorAll('.filter-pill').forEach((p) => {
+          p.classList.toggle('is-active', p === pill);
+        });
+
+        const filter = pill.dataset.filter;
+        let shown = 0;
+        galleryItems.forEach((item) => {
+          const match = filter === 'all' || item.dataset.cat === filter;
+          item.classList.toggle('is-hidden', !match);
+          if (match) {
+            shown += 1;
+            item.classList.add('in-view');
+          }
+        });
+
+        layout();
+        if (galleryEmpty) galleryEmpty.classList.toggle('is-visible', shown === 0);
+      });
+    }
+  }
+
   // Work mosaic image lightbox
   const lightbox = document.getElementById('lightbox');
   if (lightbox) {

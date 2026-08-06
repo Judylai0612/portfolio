@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=22">
+<link rel="stylesheet" href="css/style.css?v=23">
 </head>
 <body data-page="portfolio">
 
@@ -44,26 +44,110 @@
     <h2 class="section-title fade-in">Portfolio</h2>
     <p class="section-subtitle fade-in" data-en="Browse by category">依作品類型瀏覽</p>
 
-    <div class="category-cards-grid">
-      <a href="category-social.html" class="category-card fade-in" style="--card-color:#8B9DAF;">
-        <h3 class="category-card-title" data-en="Social Post Design">社群貼文設計</h3>
+    <div class="filter-pills fade-in" id="filterPills">
+      <button class="filter-pill is-active" type="button" data-filter="all" data-en="All">全部</button>
+      <button class="filter-pill" type="button" data-filter="social" data-en="Social Post Design">社群貼文設計</button>
+      <button class="filter-pill" type="button" data-filter="graphic" data-en="Graphic Design">平面設計</button>
+      <button class="filter-pill" type="button" data-filter="package" data-en="Packaging Design">包裝設計</button>
+      <button class="filter-pill" type="button" data-filter="photography" data-en="Photography">攝影作品</button>
+      <button class="filter-pill" type="button" data-filter="project" data-en="Project Design">專案設計</button>
+      <button class="filter-pill" type="button" data-filter="branding" data-en="Branding">品牌規劃</button>
+    </div>
+
+    <div class="work-gallery" id="workGallery">
+      <a href="work-social-08.html" class="gallery-item fade-in" data-cat="social" aria-label="各類節慶社群圖" data-en-aria="Seasonal & Festival Social Graphics">
+        <img src="assets/images/work-social-08-cny-1.jpg" alt="" class="gallery-img">
+        <span class="gallery-caption" data-en="Seasonal & Festival Social Graphics">各類節慶社群圖</span>
       </a>
-      <a href="category-graphic.html" class="category-card fade-in" style="--card-color:#A3B0A3;">
-        <h3 class="category-card-title" data-en="Graphic Design">平面設計</h3>
+      <a href="work-social-03.html" class="gallery-item fade-in" data-cat="social" aria-label="AVer 線上研討會社群宣傳設計" data-en-aria="AVer Webinar Social Promotion Design">
+        <img src="assets/images/work-social-03-fae.jpg" alt="" class="gallery-img">
+        <span class="gallery-caption" data-en="AVer Webinar Social Promotion Design">AVer 線上研討會社群宣傳設計</span>
       </a>
-      <a href="category-branding.html" class="category-card fade-in" style="--card-color:#C2B8A3;">
-        <h3 class="category-card-title" data-en="Branding">品牌規劃</h3>
+      <a href="work-graphic-03.html" class="gallery-item fade-in" data-cat="graphic" aria-label="韓國雜誌廣編稿-Korea avMix" data-en-aria="Korean Magazine Advertorial – Korea avMix">
+        <img src="assets/images/work-graphic-03-avmix-1.jpg" alt="" class="gallery-img">
+        <span class="gallery-caption" data-en="Korean Magazine Advertorial – Korea avMix">韓國雜誌廣編稿-Korea avMix</span>
       </a>
-      <a href="category-photography.html" class="category-card fade-in" style="--card-color:#B0A8B9;">
-        <h3 class="category-card-title" data-en="Photography">攝影作品</h3>
+      <a href="work-project-03.html" class="gallery-item fade-in" data-cat="project" aria-label="Connect better 專案製作" data-en-aria="Connect Better Project">
+        <img src="assets/images/work-project-03-cb-1.jpg" alt="" class="gallery-img">
+        <span class="gallery-caption" data-en="Connect Better Project">Connect better 專案製作</span>
       </a>
-      <a href="category-project.html" class="category-card fade-in" style="--card-color:#9FB3B8;">
-        <h3 class="category-card-title" data-en="Project Design">專案設計</h3>
+      <a href="work-social-04.html" class="gallery-item fade-in" data-cat="social" aria-label="UG 社群貼文設計（槍稿）" data-en-aria="UG Social Post Design">
+        <img src="assets/images/work-social-04-ug-1.jpg" alt="" class="gallery-img">
+        <span class="gallery-caption" data-en="UG Social Post Design">UG 社群貼文設計（槍稿）</span>
       </a>
-      <a href="category-package.html" class="category-card fade-in" style="--card-color:#C2A9A1;">
-        <h3 class="category-card-title" data-en="Packaging Design">包裝設計</h3>
+      <a href="work-graphic-04.html" class="gallery-item fade-in" data-cat="graphic" aria-label="MT100 Brochure">
+        <img src="assets/images/work-graphic-04-mt100-1.jpg" alt="" class="gallery-img">
+        <span class="gallery-caption">MT100 Brochure</span>
+      </a>
+      <a href="work-social-05.html" class="gallery-item fade-in" data-cat="social" aria-label="充電車關懷EDM" data-en-aria="EV Charging Care EDM">
+        <img src="assets/images/work-social-05-ev-1.jpg" alt="" class="gallery-img">
+        <span class="gallery-caption" data-en="EV Charging Care EDM">充電車關懷EDM</span>
+      </a>
+      <a href="work-graphic-05.html" class="gallery-item fade-in" data-cat="graphic" aria-label="MT500 Brochure">
+        <img src="assets/images/work-graphic-05-mt500-1.jpg" alt="" class="gallery-img">
+        <span class="gallery-caption">MT500 Brochure</span>
+      </a>
+      <a href="work-social-06.html" class="gallery-item fade-in" data-cat="social" aria-label="NC30新產品發布" data-en-aria="NC30 Product Launch">
+        <img src="assets/images/work-social-06-nc30-1.jpg" alt="" class="gallery-img">
+        <span class="gallery-caption" data-en="NC30 Product Launch">NC30新產品發布</span>
+      </a>
+      <a href="work-graphic-06.html" class="gallery-item fade-in" data-cat="graphic" aria-label="MD331UI Brochure">
+        <img src="assets/images/work-graphic-06-md331-1.jpg" alt="" class="gallery-img">
+        <span class="gallery-caption">MD331UI Brochure</span>
+      </a>
+      <a href="work-social-07.html" class="gallery-item fade-in" data-cat="social" aria-label="網路促銷廣告" data-en-aria="Online Promotional Ads">
+        <img src="assets/images/work-social-07-banner-1.jpg" alt="" class="gallery-img">
+        <span class="gallery-caption" data-en="Online Promotional Ads">網路促銷廣告</span>
+      </a>
+      <a href="work-graphic-07.html" class="gallery-item fade-in" data-cat="graphic" aria-label="infocommAsia eDM">
+        <img src="assets/images/work-graphic-07-infocomm-1.jpg" alt="" class="gallery-img">
+        <span class="gallery-caption">infocommAsia eDM</span>
+      </a>
+      <a href="work-social-09.html" class="gallery-item fade-in" data-cat="social" aria-label="A partnership PR (Public Relations)">
+        <img src="assets/images/work-social-09-xilica-1.jpg" alt="" class="gallery-img">
+        <span class="gallery-caption">A partnership PR (Public Relations)</span>
+      </a>
+      <a href="work-graphic-08.html" class="gallery-item fade-in" data-cat="graphic" aria-label="Aver 醫療生態圖" data-en-aria="AVer Healthcare Ecosystem Map">
+        <img src="assets/images/work-graphic-08-eco-1.jpg" alt="" class="gallery-img">
+        <span class="gallery-caption" data-en="AVer Healthcare Ecosystem Map">Aver 醫療生態圖</span>
+      </a>
+      <a href="work-social-10.html" class="gallery-item fade-in" data-cat="social" aria-label="台灣精品獎社群圖" data-en-aria="Taiwan Excellence Award Social Graphic">
+        <img src="assets/images/work-social-10-award-1.jpg" alt="" class="gallery-img">
+        <span class="gallery-caption" data-en="Taiwan Excellence Award Social Graphic">台灣精品獎社群圖</span>
+      </a>
+      <a href="work-social-11.html" class="gallery-item fade-in" data-cat="social" aria-label="MD331UI新品圖" data-en-aria="MD331UI Product Launch Graphic">
+        <img src="assets/images/work-social-11-md331-1.jpg" alt="" class="gallery-img">
+        <span class="gallery-caption" data-en="MD331UI Product Launch Graphic">MD331UI新品圖</span>
+      </a>
+      <a href="work-social-01.html" class="gallery-item is-placeholder fade-in" data-cat="social" aria-label="品牌社群主題企劃" data-en-aria="Brand Social Campaign Planning" style="--card-color:#8B9DAF;">
+        <span class="gallery-caption" data-en="Brand Social Campaign Planning">品牌社群主題企劃</span>
+      </a>
+      <a href="work-graphic-01.html" class="gallery-item is-placeholder fade-in" data-cat="graphic" aria-label="型錄與文宣設計" data-en-aria="Catalog & Collateral Design" style="--card-color:#A3B0A3;">
+        <span class="gallery-caption" data-en="Catalog & Collateral Design">型錄與文宣設計</span>
+      </a>
+      <a href="work-project-01.html" class="gallery-item is-placeholder fade-in" data-cat="project" aria-label="跨領域整合專案" data-en-aria="Cross-disciplinary Integrated Projects" style="--card-color:#9FB3B8;">
+        <span class="gallery-caption" data-en="Cross-disciplinary Integrated Projects">跨領域整合專案</span>
+      </a>
+      <a href="work-branding-01.html" class="gallery-item is-placeholder fade-in" data-cat="branding" aria-label="品牌識別系統" data-en-aria="Brand Identity System" style="--card-color:#C2B8A3;">
+        <span class="gallery-caption" data-en="Brand Identity System">品牌識別系統</span>
+      </a>
+      <a href="work-photography-01.html" class="gallery-item is-placeholder fade-in" data-cat="photography" aria-label="產品情境拍攝" data-en-aria="Product Lifestyle Photography" style="--card-color:#B0A8B9;">
+        <span class="gallery-caption" data-en="Product Lifestyle Photography">產品情境拍攝</span>
+      </a>
+      <a href="work-graphic-02.html" class="gallery-item is-placeholder fade-in" data-cat="graphic" aria-label="海報視覺設計" data-en-aria="Poster Visual Design" style="--card-color:#A3B0A3;">
+        <span class="gallery-caption" data-en="Poster Visual Design">海報視覺設計</span>
+      </a>
+      <a href="work-project-02.html" class="gallery-item is-placeholder fade-in" data-cat="project" aria-label="展覽空間規劃" data-en-aria="Exhibition Space Planning" style="--card-color:#9FB3B8;">
+        <span class="gallery-caption" data-en="Exhibition Space Planning">展覽空間規劃</span>
+      </a>
+      <a href="work-branding-02.html" class="gallery-item is-placeholder fade-in" data-cat="branding" aria-label="品牌延伸應用" data-en-aria="Brand Applications" style="--card-color:#C2B8A3;">
+        <span class="gallery-caption" data-en="Brand Applications">品牌延伸應用</span>
+      </a>
+      <a href="work-photography-02.html" class="gallery-item is-placeholder fade-in" data-cat="photography" aria-label="人像與空間紀錄" data-en-aria="Portrait & Space Documentation" style="--card-color:#B0A8B9;">
+        <span class="gallery-caption" data-en="Portrait & Space Documentation">人像與空間紀錄</span>
       </a>
     </div>
+    <p class="gallery-empty" id="galleryEmpty" data-en="Works coming soon">作品即將上架</p>
   </section>
 </main>
 
@@ -71,6 +155,6 @@
   <p>&copy; 2026 Judy Lai. All rights reserved.</p>
 </footer>
 
-<script src="js/main.js?v=22"></script>
+<script src="js/main.js?v=23"></script>
 </body>
 </html>
