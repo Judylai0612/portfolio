@@ -198,7 +198,7 @@ section {
 .intro-headline {
   position: relative;
   display: inline-block;
-  padding: 40px 0 64px;
+  padding: 40px 0 86px;
 }
 
 .intro-blob {
@@ -269,7 +269,7 @@ section {
 .intro-meta {
   position: absolute;
   right: 0;
-  bottom: 6px;
+  bottom: -6px;
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -312,7 +312,21 @@ section {
 
 @media (max-width: 640px) {
   .intro-headline {
-    padding: 30px 0 52px;
+    padding: 24px 0 0;
+  }
+
+  /* keep 2026 / the badge clear of the wordmark on narrow screens */
+  .intro-meta {
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 22px;
+  }
+
+  .intro-year {
+    align-self: auto;
   }
 
   .intro-ring text {
