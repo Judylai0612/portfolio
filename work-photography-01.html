@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=21">
+<link rel="stylesheet" href="css/style.css?v=22">
 </head>
 <body data-page="portfolio">
 
@@ -22,17 +22,18 @@
       <li><a href="index.html" class="nav-link" data-nav-target="about">About Me</a></li>
       <li><a href="portfolio.html" class="nav-link" data-nav-target="portfolio">Portfolio</a></li>
       <li><a href="contact.html" class="nav-link" data-nav-target="contact">Contact</a></li>
+      <li><button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">EN</button></li>
     </ul>
   </nav>
 </header>
 
 <main>
   <section class="section work-detail">
-    <a href="category-photography.html" class="back-link fade-in">← 返回 攝影作品</a>
+    <a href="category-photography.html" class="back-link fade-in" data-en="← Back to Photography">← 返回 攝影作品</a>
 
     <div class="work-head fade-in">
-      <h2 class="work-title">產品情境拍攝</h2>
-      <p class="work-desc">透過燈光與場景佈置，呈現產品在真實情境中的質感與細節，強化消費者的想像與連結。</p>
+      <h2 class="work-title" data-en="Product Lifestyle Photography">產品情境拍攝</h2>
+      <p class="work-desc" data-en="Lighting and set design bring out the texture and detail of products in real settings, strengthening the viewer's imagination and connection.">透過燈光與場景佈置，呈現產品在真實情境中的質感與細節，強化消費者的想像與連結。</p>
     </div>
 
     <div class="work-mosaic mosaic-3 fade-in">
@@ -61,6 +62,6 @@
   <button class="lightbox-next" id="lightboxNext" aria-label="下一張圖片">&rarr;</button>
 </div>
 
-<script src="js/main.js?v=21"></script>
+<script src="js/main.js?v=22"></script>
 </body>
 </html>

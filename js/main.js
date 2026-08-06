@@ -1,4 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Language toggle (zh-Hant <-> en)
+  const langToggle = document.getElementById('langToggle');
+  const langEls = document.querySelectorAll('[data-en]');
+  const ariaEls = document.querySelectorAll('[data-en-aria]');
+
+  const applyLang = (lang) => {
+    const isEn = lang === 'en';
+    document.documentElement.lang = isEn ? 'en' : 'zh-Hant';
+
+    langEls.forEach((el) => {
+      if (el.dataset.zh === undefined) el.dataset.zh = el.innerHTML;
+      const en = el.dataset.en;
+      if (isEn && en === '') {
+        el.style.display = 'none';
+      } else {
+        el.style.display = '';
+        el.innerHTML = isEn ? en : el.dataset.zh;
+      }
+    });
+
+    ariaEls.forEach((el) => {
+      if (el.dataset.zhAria === undefined) el.dataset.zhAria = el.getAttribute('aria-label');
+      el.setAttribute('aria-label', isEn ? el.dataset.enAria : el.dataset.zhAria);
+    });
+
+    if (langToggle) langToggle.textContent = isEn ? '中' : 'EN';
+    try { localStorage.setItem('lang', lang); } catch (e) { /* storage unavailable */ }
+  };
+
+  let savedLang = 'zh';
+  try { savedLang = localStorage.getItem('lang') || 'zh'; } catch (e) { /* storage unavailable */ }
+  applyLang(savedLang);
+
+  if (langToggle) {
+    langToggle.addEventListener('click', () => {
+      applyLang(document.documentElement.lang === 'en' ? 'zh' : 'en');
+    });
+  }
+
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
   const navLinkItems = document.querySelectorAll('.nav-link');

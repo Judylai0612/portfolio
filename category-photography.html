@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=21">
+<link rel="stylesheet" href="css/style.css?v=22">
 </head>
 <body data-page="portfolio">
 
@@ -22,22 +22,23 @@
       <li><a href="index.html" class="nav-link" data-nav-target="about">About Me</a></li>
       <li><a href="portfolio.html" class="nav-link" data-nav-target="portfolio">Portfolio</a></li>
       <li><a href="contact.html" class="nav-link" data-nav-target="contact">Contact</a></li>
+      <li><button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">EN</button></li>
     </ul>
   </nav>
 </header>
 
 <main>
   <section class="section">
-    <a href="portfolio.html" class="back-link fade-in">← 返回 Portfolio</a>
-    <h2 class="section-title fade-in">攝影作品</h2>
-    <p class="section-subtitle fade-in">Photography</p>
+    <a href="portfolio.html" class="back-link fade-in" data-en="← Back to Portfolio">← 返回 Portfolio</a>
+    <h2 class="section-title fade-in" data-en="Photography">攝影作品</h2>
+    <p class="section-subtitle fade-in" data-en="">Photography</p>
 
     <div class="category-cards-grid">
       <a href="work-photography-01.html" class="category-card fade-in" style="--card-color:#A3B0A3;">
-        <h3 class="category-card-title">產品情境拍攝</h3>
+        <h3 class="category-card-title" data-en="Product Lifestyle Photography">產品情境拍攝</h3>
       </a>
       <a href="work-photography-02.html" class="category-card fade-in" style="--card-color:#9FB3B8;">
-        <h3 class="category-card-title">人像與空間紀錄</h3>
+        <h3 class="category-card-title" data-en="Portrait & Space Documentation">人像與空間紀錄</h3>
       </a>
     </div>
   </section>
@@ -47,6 +48,6 @@
   <p>&copy; 2026 Judy Lai. All rights reserved.</p>
 </footer>
 
-<script src="js/main.js?v=21"></script>
+<script src="js/main.js?v=22"></script>
 </body>
 </html>
