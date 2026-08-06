@@ -225,18 +225,18 @@ section {
 }
 
 .blob-blue {
-  right: -4%;
-  top: -4%;
-  width: 26%;
-  padding-bottom: 26%;
+  right: -7%;
+  top: -7%;
+  width: 32%;
+  padding-bottom: 32%;
   background: radial-gradient(circle, rgba(126, 166, 199, 0.9) 0%, rgba(126, 166, 199, 0.55) 52%, rgba(126, 166, 199, 0) 72%);
 }
 
 .intro-ring {
   position: absolute;
-  right: -1%;
-  top: -1%;
-  width: 20%;
+  right: -7%;
+  top: -7%;
+  width: 32%;
   height: auto;
   aspect-ratio: 1;
   z-index: 1;
@@ -245,7 +245,7 @@ section {
 }
 
 .intro-ring text {
-  font: 500 11px 'Inter', sans-serif;
+  font: 500 14px 'Inter', sans-serif;
   letter-spacing: 0.06em;
   fill: #fff;
 }
@@ -330,7 +330,7 @@ section {
   }
 
   .intro-ring text {
-    font-size: 15px;
+    font-size: 18px;
     letter-spacing: 0.02em;
   }
 
