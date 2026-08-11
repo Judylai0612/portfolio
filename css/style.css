@@ -435,45 +435,14 @@ section {
   height: 460px;
 }
 
-.hero-photo-head {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  width: 140px;
-  height: 140px;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background: repeating-linear-gradient(135deg, oklch(78% 0.025 235) 0px, oklch(78% 0.025 235) 10px, oklch(83% 0.02 235) 10px, oklch(83% 0.02 235) 20px);
-  box-shadow: 0 12px 40px rgba(60, 75, 90, 0.18);
-}
-
-.hero-photo-body {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 112px;
-  background: repeating-linear-gradient(135deg, oklch(74% 0.03 235) 0px, oklch(74% 0.03 235) 10px, oklch(80% 0.022 235) 10px, oklch(80% 0.022 235) 20px);
-  clip-path: polygon(50% 0%, 88% 8%, 100% 100%, 0% 100%, 12% 8%);
-  box-shadow: 0 20px 50px rgba(60, 75, 90, 0.16);
-}
-
-.hero-photo-label-wrap {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 26px;
-}
-
-.hero-photo-label {
-  font: 500 12px/1.4 'Inter', monospace;
-  letter-spacing: 0.05em;
-  color: oklch(35% 0.02 240);
-  background: rgba(255, 255, 255, 0.72);
-  padding: 6px 14px;
-  border-radius: 20px;
+.hero-photo-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(60, 75, 90, 0.18);
 }
 
 .scroll-indicator {
@@ -769,15 +738,6 @@ section {
     height: 300px;
   }
 
-  .hero-photo-head {
-    width: 100px;
-    height: 100px;
-  }
-
-  .hero-photo-body {
-    top: 80px;
-  }
-
   .resume-section {
     padding: 96px 24px 100px;
   }
@@ -985,6 +945,7 @@ section {
   display: grid;
   grid-template-columns: 1fr 1.4fr;
   gap: 40px;
+  align-items: center;
   margin-bottom: 32px;
 }
 
@@ -1005,6 +966,7 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  grid-column: 2;
   margin-top: 20px;
   padding: 11px 26px;
   border-radius: 24px;
@@ -1013,6 +975,7 @@ section {
   letter-spacing: 0.02em;
   color: #fff;
   transition: background-color var(--transition-fast), transform var(--transition-fast);
+  width: fit-content;
 }
 
 .work-visit-btn:hover {
@@ -1512,6 +1475,10 @@ section {
   .work-head {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+
+  .work-visit-btn {
+    grid-column: 1;
   }
 
   .work-mosaic.mosaic-3 {
