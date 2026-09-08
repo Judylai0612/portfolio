@@ -1207,6 +1207,12 @@ section {
   letter-spacing: 0.05em;
 }
 
+/* Wider container just for the portfolio page, so the category pills
+   fit on one row and the work gallery grid gets more room */
+.portfolio-section {
+  max-width: 1400px;
+}
+
 /* ===== Portfolio category pills ===== */
 .cat-pills {
   display: flex;
