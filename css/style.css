@@ -787,6 +787,24 @@ section {
   letter-spacing: 0.06em;
 }
 
+.banner-slide.has-image {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.banner-slide.has-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.45) 100%);
+}
+
+.banner-slide.has-image .banner-label {
+  position: relative;
+  z-index: 1;
+}
+
 .banner-dots {
   position: absolute;
   left: 50%;
