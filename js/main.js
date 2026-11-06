@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Language toggle (zh-Hant <-> en)
   const langToggle = document.getElementById('langToggle');
-  const langEls = document.querySelectorAll('[data-en]');
-  const ariaEls = document.querySelectorAll('[data-en-aria]');
 
   const applyLang = (lang) => {
     const isEn = lang === 'en';
     document.documentElement.lang = isEn ? 'en' : 'zh-Hant';
+    // Queried live (not cached) so dynamically-injected content (e.g. Firestore-rendered work pages) is included.
+    const langEls = document.querySelectorAll('[data-en]');
+    const ariaEls = document.querySelectorAll('[data-en-aria]');
 
     langEls.forEach((el) => {
       if (el.dataset.zh === undefined) el.dataset.zh = el.innerHTML;
@@ -31,6 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let savedLang = 'zh';
   try { savedLang = localStorage.getItem('lang') || 'zh'; } catch (e) { /* storage unavailable */ }
   applyLang(savedLang);
+  // Exposed so dynamically-injected content can be brought in line with the currently active language.
+  window.applyCurrentLang = () => applyLang(document.documentElement.lang === 'en' ? 'en' : 'zh');
 
   if (langToggle) {
     langToggle.addEventListener('click', () => {
@@ -63,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const fadeEls = document.querySelectorAll('.fade-in, .reveal-text');
   const fadeObserver = new IntersectionObserver(
     (entries, observer) => {
       entries.forEach((entry) => {
@@ -75,7 +77,12 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     { threshold: 0.15 }
   );
-  fadeEls.forEach((el) => fadeObserver.observe(el));
+  const observeFadeEls = (root = document) => {
+    root.querySelectorAll('.fade-in, .reveal-text').forEach((el) => fadeObserver.observe(el));
+  };
+  observeFadeEls();
+  // Exposed so dynamically-injected content (e.g. Firestore-rendered work cards) can opt into the same fade-in behavior.
+  window.observeFadeEls = observeFadeEls;
 
   // Portfolio banner carousel
   const bannerTrack = document.getElementById('bannerTrack');
@@ -120,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightboxZoom = document.getElementById('lightboxZoom');
     const lightboxPrev = document.getElementById('lightboxPrev');
     const lightboxNext = document.getElementById('lightboxNext');
-    const zoomableImages = Array.from(document.querySelectorAll('.mosaic-item img'));
+    let zoomableImages = Array.from(document.querySelectorAll('.mosaic-item img'));
     let currentIndex = 0;
 
     // Zoom / pan state
@@ -177,9 +184,15 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.style.overflow = '';
     };
 
-    zoomableImages.forEach((img, i) => {
-      img.addEventListener('click', () => openLightbox(i));
-    });
+    const bindZoomableImages = () => {
+      zoomableImages = Array.from(document.querySelectorAll('.mosaic-item img'));
+      zoomableImages.forEach((img, i) => {
+        img.addEventListener('click', () => openLightbox(i));
+      });
+    };
+    bindZoomableImages();
+    // Exposed so dynamically-injected mosaic images (e.g. Firestore-rendered work pages) can wire into the lightbox.
+    window.rebindLightboxImages = bindZoomableImages;
 
     lightboxClose.addEventListener('click', closeLightbox);
     if (lightboxZoom) {

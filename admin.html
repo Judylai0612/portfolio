@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>作品後台管理 | Judy Lai Portfolio</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=36">
+<style>
+  .admin-main {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: calc(var(--header-height) + 40px) 24px 80px;
+  }
+
+  .admin-section-title {
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 24px;
+  }
+
+  /* ---- Login ---- */
+  .login-box {
+    max-width: 360px;
+    margin: 80px auto 0;
+    padding: 36px;
+    background-color: var(--color-card-bg);
+    border-radius: 12px;
+  }
+
+  .login-box h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .field {
+    margin-bottom: 16px;
+  }
+
+  .field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-text-light);
+    margin-bottom: 6px;
+  }
+
+  .field input,
+  .field textarea,
+  .field select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font: inherit;
+    background-color: #fff;
+    color: var(--color-text);
+  }
+
+  .field textarea {
+    min-height: 70px;
+    resize: vertical;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 22px;
+    border-radius: 24px;
+    border: none;
+    cursor: pointer;
+    font: 700 14px/1 var(--font-main);
+    background-color: var(--color-primary);
+    color: #fff;
+    transition: background-color var(--transition-fast);
+  }
+
+  .btn:hover { background-color: var(--color-primary-dark); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-ghost {
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+  }
+  .btn-ghost:hover { background-color: var(--color-bg-alt); }
+
+  .btn-danger { background-color: #B5555A; }
+  .btn-danger:hover { background-color: #96454A; }
+
+  .btn-small { padding: 6px 14px; font-size: 12px; }
+
+  .error-msg {
+    color: #B5555A;
+    font-size: 13px;
+    margin-top: 8px;
+    min-height: 16px;
+  }
+
+  /* ---- Admin shell ---- */
+  .admin-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
+
+  .admin-user {
+    font-size: 13px;
+    color: var(--color-text-light);
+  }
+
+  .cat-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .cat-tab {
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-card-bg);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .cat-tab.active {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+  }
+
+  .work-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+  }
+
+  .work-row-thumb {
+    width: 64px;
+    height: 64px;
+    border-radius: 6px;
+    object-fit: cover;
+    background-color: var(--color-card-bg);
+    flex-shrink: 0;
+  }
+
+  .work-row-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .work-row-title {
+    font-weight: 700;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .work-row-sub {
+    font-size: 12px;
+    color: var(--color-text-light);
+  }
+
+  .work-row-actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .icon-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+  }
+  .icon-btn:hover { background-color: var(--color-bg-alt); }
+  .icon-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  .empty-msg {
+    color: var(--color-text-light);
+    font-size: 14px;
+    padding: 24px 0;
+  }
+
+  /* ---- Work form (modal) ---- */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 20px;
+    overflow-y: auto;
+    z-index: 2000;
+  }
+
+  .modal-box {
+    width: 100%;
+    max-width: 560px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px;
+  }
+
+  .modal-box h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .image-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+  }
+
+  .image-thumb {
+    position: relative;
+    width: 84px;
+    height: 84px;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: var(--color-card-bg);
+  }
+
+  .image-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .image-thumb-remove {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body data-page="admin">
+
+<header class="site-header" id="site-header">
+  <nav class="navbar">
+    <a href="index.html" class="logo">JUDY LAI</a>
+    <ul class="nav-links" id="navLinks" style="display:flex;">
+      <li><a href="portfolio.html" class="nav-link">回到網站</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="admin-main">
+
+  <section id="loginView" class="login-box">
+    <h2>作品後台登入</h2>
+    <form id="loginForm">
+      <div class="field">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" required autocomplete="username">
+      </div>
+      <div class="field">
+        <label for="loginPassword">密碼</label>
+        <input type="password" id="loginPassword" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn" style="width:100%;justify-content:center;">登入</button>
+      <p class="error-msg" id="loginError"></p>
+    </form>
+  </section>
+
+  <section id="adminView" hidden>
+    <div class="admin-bar">
+      <h2 class="admin-section-title" style="margin:0;">作品管理</h2>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <span class="admin-user" id="adminUserEmail"></span>
+        <button class="btn btn-ghost btn-small" id="logoutBtn">登出</button>
+      </div>
+    </div>
+
+    <div class="cat-tabs" id="catTabs"></div>
+
+    <div style="display:flex;justify-content:flex-end;margin-bottom:16px;">
+      <button class="btn" id="addWorkBtn">+ 新增作品</button>
+    </div>
+
+    <div id="workList"></div>
+  </section>
+
+</main>
+
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal-box">
+    <h3 id="modalTitle">新增作品</h3>
+    <form id="workForm">
+      <div class="field">
+        <label for="fCategory">分類</label>
+        <select id="fCategory" required></select>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="fTitleZh">標題（中文）</label>
+          <input type="text" id="fTitleZh" required>
+        </div>
+        <div class="field">
+          <label for="fTitleEn">標題（英文）</label>
+          <input type="text" id="fTitleEn">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="fDescZh">介紹（中文，選填）</label>
+          <textarea id="fDescZh"></textarea>
+        </div>
+        <div class="field">
+          <label for="fDescEn">介紹（英文，選填）</label>
+          <textarea id="fDescEn"></textarea>
+        </div>
+      </div>
+      <div class="field">
+        <label for="fVisitUrl">作品網址（選填，例如一頁式網站的連結）</label>
+        <input type="url" id="fVisitUrl" placeholder="https://...">
+      </div>
+      <div class="field">
+        <label>圖片</label>
+        <div class="image-list" id="imageList"></div>
+        <input type="file" id="fImages" accept="image/*" multiple>
+        <p class="error-msg" id="uploadStatus"></p>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="cancelFormBtn">取消</button>
+        <button type="submit" class="btn" id="saveWorkBtn">儲存</button>
+      </div>
+      <p class="error-msg" id="formError"></p>
+    </form>
+  </div>
+</div>
+
+<script type="module" src="js/admin.js"></script>
+</body>
+</html>

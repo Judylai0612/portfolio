@@ -1,0 +1,12 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Anyone can read the works collection (the public portfolio pages need this).
+    // Only a signed-in user (i.e. you, logged into admin.html) can create/edit/delete.
+    match /works/{workId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+  }
+}
