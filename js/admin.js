@@ -8,7 +8,11 @@ import {
   updateWork,
   deleteWork,
   uploadWorkImage,
-  deleteWorkImage
+  deleteWorkImage,
+  getBanners,
+  setBanner,
+  uploadBannerImage,
+  deleteBannerImage
 } from "./firebase-app.js";
 
 const loginView = document.getElementById("loginView");
@@ -50,6 +54,7 @@ watchAuth((user) => {
     adminUserEmail.textContent = user.email;
     renderCatTabs();
     loadWorks();
+    loadBanners();
   } else {
     loginView.hidden = false;
     adminView.hidden = true;
@@ -298,4 +303,65 @@ function escapeHtml(str) {
   const div = document.createElement("div");
   div.textContent = str;
   return div.innerHTML;
+}
+
+// ---------------- Banner management ----------------
+const bannerList = document.getElementById("bannerList");
+let bannersMap = {};
+
+async function loadBanners() {
+  bannerList.innerHTML = '<p class="empty-msg">載入中…</p>';
+  try {
+    bannersMap = await getBanners();
+  } catch (err) {
+    bannerList.innerHTML = '<p class="empty-msg">載入失敗：' + err.message + "</p>";
+    return;
+  }
+  renderBannerList();
+}
+
+function renderBannerList() {
+  bannerList.innerHTML = "";
+  CATEGORIES.forEach((cat) => {
+    const banner = bannersMap[cat.id];
+
+    const row = document.createElement("div");
+    row.className = "banner-row";
+
+    const thumb = document.createElement("img");
+    thumb.className = "banner-row-thumb";
+    thumb.src = (banner && banner.url) || "";
+    thumb.alt = "";
+    row.appendChild(thumb);
+
+    const info = document.createElement("div");
+    info.className = "banner-row-info";
+    info.innerHTML =
+      '<div class="banner-row-title">' + escapeHtml(cat.name_zh) + "</div>" +
+      '<div class="banner-row-sub">' + (banner && banner.url ? "已上傳輪播圖" : "尚未上傳，目前顯示純色色塊") + "</div>";
+    row.appendChild(info);
+
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = "image/*";
+    fileInput.addEventListener("change", async () => {
+      const file = fileInput.files && fileInput.files[0];
+      if (!file) return;
+      const sub = info.querySelector(".banner-row-sub");
+      sub.textContent = "上傳中…";
+      try {
+        const oldPath = banner && banner.path;
+        const result = await uploadBannerImage(cat.id, file);
+        await setBanner(cat.id, result);
+        if (oldPath) await deleteBannerImage(oldPath).catch(() => {});
+        bannersMap[cat.id] = result;
+        renderBannerList();
+      } catch (err) {
+        sub.textContent = "上傳失敗：" + err.message;
+      }
+    });
+    row.appendChild(fileInput);
+
+    bannerList.appendChild(row);
+  });
 }

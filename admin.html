@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=36">
+<link rel="stylesheet" href="css/style.css?v=37">
 <style>
   .admin-main {
     max-width: 920px;
@@ -200,6 +200,52 @@
     padding: 24px 0;
   }
 
+  .section-divider {
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .section-hint {
+    color: var(--color-text-light);
+    font-size: 13px;
+    margin: -12px 0 20px;
+  }
+
+  .banner-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+  }
+
+  .banner-row-thumb {
+    width: 110px;
+    height: 62px;
+    border-radius: 6px;
+    object-fit: cover;
+    background-color: var(--color-card-bg);
+    flex-shrink: 0;
+  }
+
+  .banner-row-info {
+    flex: 1;
+  }
+
+  .banner-row-title {
+    font-weight: 700;
+    font-size: 15px;
+  }
+
+  .banner-row-sub {
+    font-size: 12px;
+    color: var(--color-text-light);
+  }
+
   /* ---- Work form (modal) ---- */
   .modal-overlay {
     position: fixed;
@@ -324,6 +370,12 @@
     </div>
 
     <div id="workList"></div>
+
+    <div class="section-divider">
+      <h2 class="admin-section-title">Banner 輪播圖管理</h2>
+      <p class="section-hint">每個分類可以上傳一張輪播圖片，取代首頁 Portfolio 上方輪播目前的純色色塊。</p>
+      <div id="bannerList"></div>
+    </div>
   </section>
 
 </main>
